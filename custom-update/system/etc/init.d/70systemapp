@@ -1,0 +1,11 @@
+#!/system/bin/sh
+
+busybox mount -o rw,remount system/
+
+cd /data/system_app/
+for filename in `ls`
+do
+    ln -s /data/system_app/$filename /system/app/$filename
+done 
+
+busybox mount -o ro,remount system/
